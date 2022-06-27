@@ -56,4 +56,3 @@ int planetInput(int potval)
     return 9;
   }
 }
-

@@ -290,11 +290,13 @@ int ct;
 double Azimuth, Elevation;
 float pitch, yaw, roll;
 double Azi, Elev;
-int Az, El;
+int Az, El,PrevEl;
 int countn = 2;
 int flag = 0;
+bool dir = true;
 void setup()
 {
+  PrevEl=0;
   pinMode(A5, INPUT);
   pinMode(13, OUTPUT);
   pinMode(46, INPUT_PULLUP);
@@ -399,9 +401,27 @@ void loop()
   //Serial.println("F");
   Serial.print("Planet"); Serial.print("\t"); Serial.print("YAW"); Serial.print("\t"); Serial.print("Servo Angle:"); Serial.print("\t"); Serial.print("AZIMUTH"); Serial.print("\t"); Serial.print("ELEVATION"); Serial.print("\t"); Serial.print("LATITUDE"); Serial.print("\t"); Serial.print("LONGITUDE"); Serial.print("\t"); Serial.print("YEAR"); Serial.print("\t"); Serial.print("MONTH"); Serial.print("\t"); Serial.print("DAY"); Serial.print("\t"); Serial.print("HOUR"); Serial.print("\t"); Serial.println("MINUTE");
   ana = analogRead(A14);
-  pno = planetInput(ana);/*Serial.print(pno); */Serial.print("\t"); Serial.print(nyaw); Serial.print("\t"); Serial.print(Azim); Serial.print("\t\t"); Serial.print(Azimuth); Serial.print("\t"); Serial.print(Elevation); Serial.print("\t\t"); Serial.print(Lat, 6); Serial.print("\t"); Serial.print(Long, 6); Serial.print("\t"); Serial.print(yy); Serial.print("\t"); Serial.print(mu); Serial.print("\t"); Serial.print(dd); Serial.print("\t"); Serial.print(hh); Serial.print("\t"); Serial.println(mm);
+  pno = planetInput(ana); /*Serial.print(pno);*/ Serial.print("\t"); Serial.print(nyaw); Serial.print("\t"); Serial.print(Azim); Serial.print("\t\t"); Serial.print(Azimuth); Serial.print("\t"); Serial.print(Elevation); Serial.print("\t\t"); Serial.print(Lat, 6); Serial.print("\t"); Serial.print(Long, 6); Serial.print("\t"); Serial.print(yy); Serial.print("\t"); Serial.print(mu); Serial.print("\t"); Serial.print(dd); Serial.print("\t"); Serial.print(hh); Serial.print("\t"); Serial.println(mm);  
+
+  
+  //myservoAz.attach(9);
+  //delay(10);
+  Serial.println(Az);
   myservoAz.write(Az);
+  //delay(10);
+  //myservoAz.detach();
+  
+  
+  if (El!=PrevEl){
+  myservoEl.attach(10);
+  delay(50);
+  Serial.println(El);
   myservoEl.write(El);
+  PrevEl=El;
+  delay(50);
+  myservoEl.detach();
+  }
+  
  smartDelay(1);
 
 }
