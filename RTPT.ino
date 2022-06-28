@@ -29,6 +29,10 @@ This file is part of RTPT.
 #include <Servo.h>
 #include <SPI.h>
 #include <Wire.h>
+#include <Adafruit_NeoPixel.h>
+#ifdef __AVR__
+ #include <avr/power.h> // Required for 16 MHz Adafruit Trinket
+#endif
 
 #define AK8963_ADDRESS   0x0C
 #define WHO_AM_I_AK8963  0x00 // should return 0x48
@@ -174,6 +178,12 @@ This file is part of RTPT.
 
 #define AHRS true         // set to false for basic data read
 #define SerialDebug true   // set to true to get Serial output for debugging
+#define PIN 6
+#define NUMPIXELS 10
+
+Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
+
+#define DELAYVAL 500
 
 
 
@@ -293,7 +303,6 @@ double Azi, Elev;
 int Az, El,PrevEl;
 int countn = 2;
 int flag = 0;
-bool dir = true;
 void setup()
 {
   PrevEl=0;
@@ -334,6 +343,11 @@ void setup()
     Serial.println(c, HEX);
     while (1) ; // Loop forever if communication doesn't happen
   }
+
+  #if defined(__AVR_ATtiny85__) && (F_CPU == 16000000)
+    clock_prescale_set(clock_div_1);
+  #endif
+  pixels.begin();
   myservoAz.attach(9);
   myservoEl.attach(10);
   myservoAz.write(5);
@@ -344,6 +358,7 @@ void setup()
 }
 void loop()
 {
+  pixels.clear();
 
   MPUloop();
 
@@ -410,16 +425,52 @@ void loop()
   myservoAz.write(Az);
   //delay(10);
   //myservoAz.detach();
-  
+  int r = 0, g = 0, b = 0;
+  if (pno == 1) {
+    r = 150;
+  }
+  else if (pno = 2) {
+    r = 255;
+    g = 165;
+  }
+  else if (pno == 4) {
+    r = 255;
+    g = 255;
+  }
+  else if (pno == 5) {
+    g = 255;
+  }
+  else if (pno == 6) {
+    r = 31;
+    g = 249;
+    b = 255;
+  }
+  else if (pno == 7) {
+    b = 255;
+  }
+  else if (pno == 8) {
+    r = 180;
+    b = 255;
+  }
+  else if (pno == 9) {
+    r = 255;
+    g = 71;
+    b = 194;
+  }
+
+  for (int i = 0; i < NUMPIXELS; i++) {
+    pixels.setPixelColor(i, pixels.Color(r, g, b));
+    pixels.show();
+  }
   
   if (El!=PrevEl){
-  myservoEl.attach(10);
-  delay(50);
-  Serial.println(El);
-  myservoEl.write(El);
-  PrevEl=El;
-  delay(50);
-  myservoEl.detach();
+    myservoEl.attach(10);
+    delay(50);
+    Serial.println(El);
+    myservoEl.write(El);
+    PrevEl=El;
+    delay(50);
+    myservoEl.detach();
   }
   
  smartDelay(1);
