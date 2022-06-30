@@ -22,7 +22,7 @@ My second milestone was finishing creating a functioning planet tracker. After c
 My first milestone was completing the majority of the hardware portion, which included connecting the pan servo, tilt servo, GPS, and MPU to the arduino and breadboard. The first part was to connect the GPS and MPU, which work together to deliver data to my computer. This was a very grueling process, as there were a number of issues that arose. My arduino mega stopped working after the first couple of days, which meant it had to be replaced, and the initial output of running the code showed that there was an error with the wiring in the GPS. I was able to locate the wiring problem and the coding errors, and after fixing them and going outside to get the most accurate data, the program outputted the necessary data. After this was achieved, I implemented the pan servo and tilt servo, which rotate to point at the position of the default planet in the program, which is Jupiter. My next steps are to implement the potentiometer to allow the user to choose which planet to track. Another step I want to acheive is mounting both servos onto the L bracket and adding the laser pointer to point at the chosen celestial body.
 
 
-[![First Milestone](https://i.ytimg.com/vi/_fhy38Evc5s/sddefault.jpg)]([https://www.youtube.com/watch?v=CaCazFBhYKs](https://www.youtube.com/watch?v=_fhy38Evc5s&ab_channel=BlueStampEng) "First Milestone"){:target="_blank" rel="noopener"}
+[![First Milestone](https://i.ytimg.com/vi/_fhy38Evc5s/sddefault.jpg)](https://www.youtube.com/watch?v=_fhy38Evc5s&t=14s "First Milestone"){:target="_blank" rel="noopener"}
 # Starter Project
   
 
