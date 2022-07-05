@@ -1,4 +1,4 @@
-﻿# Real-Time Planet Tracker
+﻿# Real-Time Planet Tracking System & Trajectory Prediction
 The Real-Time Planet Tracker tracks celestial bodies using Kepler’s algorithms. The RTPT is programmed using Arduino and the celestial bodies are located through a GPS and a motion processing unit, which are shown to the user through the servos and laser pointing at the selected celestial body.
 
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
