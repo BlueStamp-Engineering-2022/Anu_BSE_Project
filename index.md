@@ -5,8 +5,6 @@ The Real-Time Planet Tracker tracks celestial bodies using Kepler’s algorithms
 |:--:|:--:|:--:|:--:|
 | Anu | Saratoga High School | Computer Science | Incoming Junior
 
-![Headstone Image](https://lh3.googleusercontent.com/pw/AM-JKLWOE_bWAj9twGssXxUG27Ftw0bwxgn-iafSzjxQ0Uu52ZZpJRw2lnKLgeU_ImVyBurHE6haYbYiNBKq_NpijfUcmvh5ljUwxhtbIEbumTs58MUYXCXgAETFNA0ui6goKovzMg9ULKHzh6mYEWLOX6z3=w1466-h1464-no?authuser=0)
-  
 # Final Milestone
 My final milestone was making the modifications to my basic planet tracker. I attached all of my components to a wooden board and implemented LED lights. The color of the LEDs change as you change which planet you're tracking. Attaching all of the components to the wooden board keeps the entire project in place and organized. I really enjoyed attaching the tilt servo to the wooden board because it taught me how to use a drill. I struggled with implementing the LEDs, especially in the wiring portion. It was difficult to find diagrams on connecting the LEDs, as most of the ideas would cause my arduino to overload from the amount of power the servos and, now, LED required in order to function. After figuring out the wiring, I was easily able to write the code for the LEDs changing. An implementation I would like to add is programming the tracker to track celstial bodies beyond the planets in our solar system.
 
